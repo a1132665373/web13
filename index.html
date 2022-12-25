@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        table {
+            font-family: 黑体;
+        }
+    </style>
+    <script>
+        function define() {
+            var UserName = document.login.UserName.value;
+            var password = document.login.password.value;
+            var flag = false;
+            if (document.login.UserName.value == "") {
+                alert("账号不能为空！")
+            }
+            if (document.login.password.value == "") {
+                alert("密码不能为空！")
+            }
+            if (password.length < 6) {
+                alert("密码的长度必须大于等于6");
+                return false;
+            }
+            var sex = document.getElementsByName('sex');
+            var flag = false;
+            for (var i = 0; i < sex.length; i++) {
+                if (sex[i].checked == true) {
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                alert("您未选择性别！");
+                return false;
+            }
+            var blood = document.getElementsByName('blood');
+            var flag = false;
+            for (var i = 0; i < blood.length; i++) {
+                if (blood[i].checked) {
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                alert('您未选择血型！');
+                return false;
+            }
+            var character = document.getElementsByName('character');
+            var flag = false;
+            for (var i = 0; i < character.length; i++) {
+                if (character[i].checked) {
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                alert('您未选性格')
+                return false;
+            }
+            var city = document.getElementById('city');
+            var index = city.selectedIndex;
+            var cityShow = city.options[index].value;
+            alert("提交成功！")
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <form action="#" name="login">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            账号:
+                            <input type="text" name="UserName" placeholder="请输入账号">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>密码:
+                            <input type="password" name="password" required="" placeholder="请输入密码">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>性别:
+                            <input type="radio" name="sex" value="man">男
+                            <input type="radio" name="sex" value="woman">女
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>血型:
+                            <input type="radio" name="blood" value="O">O
+                            <input type="radio" name="blood" value="A">A
+                            <input type="radio" name="blood" value="B">B
+                            <input type="radio" name="blood" value="Other">其它
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>性格:
+                            <input type="checkbox" name="character" value="ai1">热情大方
+                            <input type="checkbox" name="character" value="ai2">温柔体贴
+                            <input type="checkbox" name="character" value="ai3">多情善感
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>文件:
+                            <input type="text" name="files" placeholder="请选择文件">
+                            <input type="file" name="file" value="浏览..">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>简介:
+                            <input type="textarea" placeholder="个人简介">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>城市:
+                            <select id="city">
+                                <option>成都市</option>
+                                <option>重庆市</option>
+                                <option>杭州市</option>
+                                <option>深圳市</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="提交" onclick="define()">
+                            <input type="reset" value="重置">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
